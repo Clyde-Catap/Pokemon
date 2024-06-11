@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import NavigationBar from './components/NavigationBar'
+import Footer from './components/Footer';
+import Content from './components/Content/Content';
 
 function App() {
-
+  const primaryDiv = "flex flex-col min-h-screen"
   useEffect(() => {
     async function getPokemon(pokemon) {
       try {
@@ -24,9 +26,12 @@ function App() {
   }, []); // empty dependency array means this effect runs only once on mount
 
   return (
-    <>
+    <div className={primaryDiv}>
       <NavigationBar></NavigationBar>
-    </>
+      <Content></Content>
+      <Footer></Footer>
+    </div>
+
   )
 }
 
