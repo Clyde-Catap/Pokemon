@@ -1,11 +1,22 @@
 import SearchIcon from '../assets/Search-icon.svg';
 import Grass from '../assets/Grass.jpg';
+import { Individual } from '../store/PokemonContext';
+import { useContext } from 'react';
+
 
 export default function NavigationBar(){    
 
 
+    const {getNewPokemonId} = useContext(Individual);
+
+    function handleRandom(){
+        let randomNumber = Math.floor(Math.random() * 1026);
+        getNewPokemonId(randomNumber);
+    }
+
+
+
     return (
-        <>
         <header>
             <div className="navbar bg-base-100">
                 <div className="flex-1">
@@ -14,7 +25,7 @@ export default function NavigationBar(){
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                     <li><a>Quiz</a></li>
-                    <li><a>Random</a></li>
+                    <li><button onClick={handleRandom}>Random</button></li>
                     </ul>
                 </div>
                 <div className="flex-none gap-2">
@@ -44,6 +55,5 @@ export default function NavigationBar(){
                 </div>
             </div>
         </header>
-        </>
     );
 }
